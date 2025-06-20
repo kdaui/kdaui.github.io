@@ -266,6 +266,14 @@ header pre {
   max-width: 320px;
 }
 
+.bsky img {
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
 .bsky h3, .bsky p {
   font-family: 'Venice', monospace;
   margin: 0.25rem 0;
