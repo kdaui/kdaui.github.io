@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="album.css">
+    <title>Album Covers</title>
+</head>
+<body>
+    <div class="title">
+        <h1 class="header-text">ALBUMS</h1>
+    </div>
+
+    <div class="home-button">
+        <a href="index.html">Home</a>
+    </div>
+
+    <div class="tion">
+        <center>A collection of inside jokes made by me and my friends with albums.</center>
+    </div>
+
+    <div class="main-container">
+        <div class="container">
+            <div class="album-covers">
+                <!-- Album cards will be injected here -->
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-container">
+        <p>© 2025 The Breather. All rights reserved.</p>
+    </div>
+
+    <script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const albumCovers = [
+            { title: "STRINGS", cover: "assets/images/albums/strings.png" },
+            { title: "4 MARKER", cover: "assets/images/albums/4mk.png" },
+            { title: "SAVIOR", cover: "assets/images/albums/savior.png" },
+            { title: "STRUNG", cover: "assets/images/albums/STRUNG.png" },
+            { title: "CRUMBLE", cover: "assets/images/albums/crumble.png" },
+            { title: "TRIPPED", cover: "assets/images/albums/tripped.png" },
+            { title: "DRACO", cover: "assets/images/albums/drac.png" }
+        ];
+
+        const container = document.querySelector('.album-covers');
+
+        albumCovers.forEach(album => {
+            const albumDiv = document.createElement('div');
+            albumDiv.classList.add('album');
+
+            const img = document.createElement('img');
+            img.src = album.cover;
+            img.alt = album.title;
+
+            const title = document.createElement('h3');
+            title.textContent = album.title;
+
+            albumDiv.appendChild(img);
+            albumDiv.appendChild(title);
+            container.appendChild(albumDiv);
+        });
+    });
+    </script>
+</body>
+</html>

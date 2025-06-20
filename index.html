@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>kdaui.'s night</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Inter&display=swap" rel="stylesheet">
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<!-- SCM Music Player https://www.scmplayer.net -->
+<script type="text/javascript" src="https://www.scmplayer.net/script.js" 
+data-config="{'skin':'skins/black/skin.css','volume':50,'autoplay':false,'shuffle':false,'repeat':2,'placement':'top','showplaylist':false,'playlist':[{'title':'Mirage (Season 2 Opening From %22Yofukashi No Uta: Call Of The Night%22)','url':'https://youtu.be/W2oT4MlK6dA'}]}" ></script>
+<!-- SCM Music Player script end -->
+<div id="background-blur"></div>
+<div id="overlay-black"></div>
+	<header>
+	<pre>
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣤⠴⠶⠒⠒⠂⠈⠈⠈⠈⠂⠈⠙⠒⠲⠦⣀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⣤⠖⠚⠉⢁⠀⠀⠀⠀⠀⠀⠀⠀⢠⠀⠀⠀⡀⠀⠀⡀⠀⠀⠙⠢⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⠞⠋⠁⢀⡀⠀⠀⠀⠀⠇⠀⠀⠀⠀⠀⠉⠀⠀⢁⠀⠀⣁⠂⡁⠠⡀⠀⠀⠑⡦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠋⠐⠀⣠⠔⠀⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠀⠜⠠⢁⠊⡡⡈⠖⢌⠈⠲⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡰⠫⠪⠀⣠⠊⠈⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠐⠠⠰⡀⢊⢂⠀⢪⠳⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣜⠆⠀⢠⠮⠄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠀⠀⠡⠀⠀⢈⢦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⡞⠁⠀⣰⠓⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢁⠈⡀⠁⡀⠀⠈⢻⣆⠤⠔⠒⠈⠙⠋⢁⡀⠠⠀⠀
+	⠀⠀ ⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡟⠀⠀⡐⣊⠰⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠘⠀⠠⠀⠩⠄⠈⢀⢃⣴⠂⡀⠀⠀⢀⣁⣂⡠⢀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡼⠄⠀⠬⢈⡁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠀⠀⡆⠀⡄⠀⢉⡀⡈⣸⣇⠈⢰⠮⣴⣨⢗⣖⠁⠀⠉
+	⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⢐⣏⠄⠎⠂⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⡀⠀⠀⠀⠀⠀⠁⡀⠀⠀⠀⠀⠀⠈⣠⢁⠁⡗⠊⠈⡇⠀⠙⠀⠈⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⢀⡀⠀⠤⠤⠬⡁⡘⢠⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠁⢀⢀⠀⢰⠀⠀⠁⡄⢠⢻⠀⣄⠉⢳⡀⠀⠀⠀⠀⠀
+	⠀⢀⣀⣐⠈⠁⠀⠀⠀⠀⠀⢸⢴⠃⡀⠀⢸⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠃⠀⠀⠀⠈⠀⠀⠀⢠⠀⠀⠞⠄⠙⢈⠘⠀⢸⠀⠀⠀⠁⠀⢸⠑⠋⠀⠀⢹⠀⠀⠀⠀⠀
+	⠠⢗⢟⠊⢀⢀⢀⢀⣠⡢⢴⢻⠿⠀⡇⢰⠈⠀⡀⠆⠀⡀⠀⠀⠀⠀⠀⠀⠈⢈⠀⡐⠀⠀⠋⠑⠀⠀⠀⡤⢀⣀⣐⣒⣀⣀⣀⠀⠀⠂⢺⠆⠀⠈⠀⠀⠀⢸⢈⢸⠀⠀⠀⠀⢸⠀⠀⠀⠀⠀
+	⠠⡣⠐⢐⡵⣃⠔⠋⠉⣰⠁⢸⠆⠀⠀⢸⠀⠓⠀⠀⠠⠀⠐⡀⢀⠀⠤⠘⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠋⡏⡞⠕⠙⡏⠉⠉⠛⠲⣶⢖⣂⠀⠀⠀⠀⠀⠈⢸⡀⠀⠀⠁⠉⠲⣄⠀⠀⠀
+	⠁⠀⠀⠠⠚⠁⠀⠀⠀⢿⢠⡇⠀⠀⠀⠀⠀⣴⠂⢁⠢⣐⢑⡑⠉⣀⡠⠤⢤⠤⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠉⠉⠉⠉⠁⠀⠰⠂⠐⠀⠈⠓⠀⢀⠀⠀⠀⣀⣸⡿⠉⢠⠀⠀⠀⢘⡇⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⡸⢳⠁⠀⠀⠀⠀⠄⠈⡙⠊⠓⢀⣵⠞⠋⡏⢇⡢⠘⠀⠀⠀⠀⢠⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⠀⠀⡀⠀⠀⠀⠀⠀⢀⡧⡈⢃⠀⢸⠀⠀⢀⣼⠃⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⡶⠁⢸⠀⠀⠀⠀⠀⠀⠐⣣⣴⠟⠋⠀⠀⠔⠊⠁⠀⠀⠀⠀⠀⠀⠈⠐⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⣀⠤⠖⢻⠀⠀⠀⠀⠀⠀⠘⠋⢻⢸⢂⡀⠀⠂⠉⠈⣷⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⣇⠀⡄⠀⠀⠀⠀⠀⠈⠩⠒⠟⡀⠒⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠂⠈⠀⠀⠀⢀⠇⠀⠀⠈⠀⠀⠀⠄⠄⠘⢸⡏⠈⢀⡂⠀⢀⡿⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠈⢎⡇⠀⠀⢀⠀⠀⠀⠀⠀⠈⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠀⠀⠐⢀⠀⢀⡜⡀⠀⢀⠞⡆⠀⢐⡄⠀⠺⣆⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⣰⠃⡇⠀⠀⠀⠀⢀⠀⠀⠀⠀⠀⠠⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠄⠂⠉⢀⣀⣀⣀⣀⠀⠀⠀⠀⠀⠀⠀⡘⠁⠄⠄⠠⠂⡠⣒⢀⠒⡠⠊⢰⡃⠀⣮⢂⠀⠀⣼⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⢀⠃⠀⢱⠀⠀⠀⠀⠀⠄⠀⠀⠀⠀⠐⢠⠢⠀⠀⠀⠀⠀⠀⠀⢠⠁⣴⣾⣿⣿⣿⣿⣿⣿⣰⡈⠄⠀⠀⠀⠐⡠⡠⠐⠀⡎⢈⠔⠛⡡⠊⠀⠀⠀⡵⠐⠳⡁⠐⠻⡅⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠳⣤⣈⡄⠀⠀⠀⠀⠀⠀⠀⢰⣦⢄⡀⠑⢄⠀⠀⠀⠀⠀⠀⡘⢤⣿⣿⣿⣿⣿⣿⣿⡻⣿⣷⠰⠀⠀⠐⠂⠉⠀⠀⣘⢴⡅⠠⠎⠀⠀⠀⠀⠘⡀⠀⢸⡁⠀⠀⢹⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⡜⠙⢢⠀⢠⠱⡀⠀⠀⠀⠈⣿⣇⠈⠁⠒⠓⠢⠄⠀⠀⠀⢃⠈⣟⣾⣿⣿⡿⣿⣿⠷⠿⢿⣿⡇⠀⠀⠀⠀⢀⠔⢀⡾⠁⠀⠀⠄⠀⠀⠀⣠⠵⠀⢉⠔⠀⣠⠎⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⢸⠁⠀⠈⠄⠀⠀⢻⠢⡀⠢⡀⠘⡔⢳⡀⠀⠀⠀⠀⠀⠀⠀⠸⣿⣿⡿⠉⠨⠻⠭⠀⠀⠀⢠⠈⡁⠀⠀⠀⠀⠁⠀⡾⡇⠀⠀⠀⠀⠀⠀⠀⡇⠀⡀⠕⠀⠉⢱⡀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠈⠢⡀⠀⣈⠜⡀⣠⣤⠈⠂⢄⡀⠘⢄⠱⡄⠀⠀⠀⠀⠀⠀⠀⢛⠁⠠⣀⢀⠀⠀⠀⡀⢀⠋⢁⠃⠀⠀⠀⠀⣠⢿⡄⠉⠱⠀⠀⠀⠀⢠⠶⠲⢺⠀⠀⠀⠀⢘⡄⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠊⠙⠋⡶⡙⠁⠃⠀⠀⠈⠑⠞⠦⠉⠢⢄⡀⠀⠀⠀⠀⠀⠀⠁⠐⠤⠤⠀⠄⠐⡉⠐⠁⠀⠀⠀⣠⣞⠸⢃⢂⠈⣈⠉⡲⠊⠙⡇⠀⠀⠔⠀⢀⢤⠒⠉⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠇⠀⠀⠀⠈⠂⠀⢰⡀⠀⠀⠀⠀⠀⠀⠀⡤⠛⠓⠦⣄⡀⠀⠀⠀⠀⠀⠀⠀⠉⠁⠀⠀⠀⢀⣠⢞⣍⣟⠇⠈⠈⠀⢑⣤⠊⠂⠀⠙⠓⠁⠀⠀⠁⢸⠁⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠒⠤⡈⣐⣡⡂⠥⠎⢢⠀⠀⠀⠀⠀⢀⣗⠀⡌⠂⠀⢻⠙⢲⠄⣀⠀⠀⠀⠀⠀⠀⢀⡰⠚⠁⠀⡟⣿⠦⢀⣀⣰⠈⠕⠀⠀⠀⢡⠁⠀⠀⠀⢀⡞⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢠⠃⠀⠀⠉⢦⠀⠸⠁⠀⢀⠀⡴⢁⠀⡠⣳⠂⢰⣈⡆⠈⢹⣧⡾⠐⣲⠒⢶⠚⠁⡄⠀⠀⠘⡇⡏⠀⠀⠀⠀⢣⠀⠀⠀⣠⠝⠓⠒⠒⠒⠙⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠸⣀⠀⠀⠀⠀⡑⠀⠉⠺⠃⠠⠬⠕⡴⠀⠈⢀⢨⠋⡇⠀⠀⠈⠀⢀⣿⠀⡇⠀⢠⠇⠀⠀⠔⠉⡇⠀⠀⠀⠀⠀⠁⠒⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠑⡖⠛⠛⠆⠠⠤⡔⠀⠈⠂⠇⢀⢠⢍⠏⠀⢹⠀⠀⠀⠀⠛⣀⣰⣀⣀⣮⣤⣤⣤⣄⣀⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢣⠀⠀⠀⣡⡗⠀⠀⢠⠞⠒⠓⠓⠉⠀⠀⣸⠒⠉⠉⠉⠈⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠑⠒⠚⠁⠙⠒⠊⠁⠀⠀⠀⠀⠀⠀⠀⣿⣇⠀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⣿⡟⣇⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣴⣿⡿⠀⡀⠀⠀⠀⠈⢿⣿⣿⣿⣿⣿⣿⡿⠿⢳⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
+	</pre>
+	</div>
+  </header>
+	
+	<blockquote class="glow-quote animated-quote">
+		<span>"</span>
+		<span>To</span>
+		<span>fall</span>
+		<span>in</span>
+		<span>love</span>
+		<span>you</span>
+		<span>have</span>
+		<span>to</span>
+		<span>be</span>
+		<span>a</span>
+		<span>little</span>
+		<span>dysfunctional.</span>
+		<span>"</span>
+	</blockquote>
+
+	<main>
+    <section class="intro">
+		<p class="intro-text">
+			Yo, I'm that <span class="rainbow-text">@kdaui</span> guy. </br>
+            This is my website made with a ton of migraines. </br>
+			This website was recreated again on 18th July 2025. </br>
+			3RD RENDITION Y'ALL I'M STILL ALIVE! </br>
+			I may be a programmer. I code horrible things when I feel like it. </br>
+		</p>
+    </section>
+	
+    <section class="projects">
+	    <h2>Stuff I Made</h2>
+		    <ul>
+			    <li><a href="https://kdaui.github.io/collab">Chlaui</a> – A small collab between me and my bestie.</li>
+				<li><a href="https://kdaui.github.io/posts/ascii.html">ASCII</a> - A badly made ascii font generator.</li>
+				<li><a href="https://kdaui.github.io/posts/blackjack.html">BlackJack, 21</a> - A horridly made Blackjack - 21 game.
+			    <li><a href="https://kdaui.github.io/posts/">More on The Terminal</a></li>
+		    </ul>
+	</section>
+	
+	<section class="Social-cont">
+		<div class="last-fm" id="last-fm">
+			<h3>Now Playing</h3>
+			<p>Loading...</p>
+		</div>
+		<div class="bsky">
+			<h3>Bsky-ing</h3>
+			<p>Loading...</p>
+		</div>
+	</section>
+
+	<section class="friend">
+	  <header>
+		<h2>My Homies</h2>
+	  </header>
+	  <div class="friends-scroll">
+		<div class="friend-strip">
+		  <span>monochromehd</span>
+		  <span>dracodrip5</span>
+		  <span>wigster81</span>
+		  <span>grapman</span>
+		  <span>miresao</span>
+		  <span>mr_toasty911</span>
+		  <span>zachary019</span>
+		  <span>._nico_.</span>
+		  <span>851381 (SGS09)</span>
+		  <span>a1q1b</span>
+		  <span>mada1r5</span>
+		  <span>ballin</span>
+		  <span>thewolflovers</span>
+		  <span>breatheair0274</span>
+		</div>
+	  </div>
+	</section>
+
+	<section class="widget-zone">
+	  <div class="moon-widget">
+		<iframe width="180" height="180" style="border:none" src="https://dimden.dev/moon?custom=1" name="dimdenmoonwidget"></iframe>
+	  </div>
+
+	  <div class="hotlink">
+		<a href="https://kdaui.github.io/" class="hotlinked">
+		  <img src="assets/images/blinkie.gif" alt="KDAUI"/>
+		</a>
+		<textarea class="hotlink-code" readonly>
+		&lt;a href="https://kdaui.github.io/"&gt;&lt;img src="assets/images/blinkie.gif" alt="KDAUI"&gt;&lt;/a&gt;
+		</textarea>
+		<p>Hotlink my button!</p>
+	  </div>
+	</section>
+	
+  </main>
+
+  <footer>
+    <section class="footer-nav">
+	  <nav class="footer-links">
+		<a href="index.html">Home</a>
+		<a href="manga.html">Manga</a>
+		<a href="music.html">Music</a>
+		<a href="albums.html">Albums</a>
+		<a href="/tutorials">Tutorials</a>
+		<a href="KDOne.html">KDOne</a>
+		<a href="https://bsky.app/profile/kdaui.github.io" rel="me">Bluesky</a>
+		<a href="https://github.com/kdaui" rel="me">GitHub</a>
+		<a href="https://www.last.fm/user/C_Hori" rel="me">Last-FM</a>
+		<a href="CMA.html">CMA 1990</a>
+	  </nav>
+	</section>
+	<p>&copy; 2025 The Breathers</p>
+  </footer>
+<script>
+	window.addEventListener('scroll', () => {
+    const bg = document.getElementById('background-blur');
+    const scrollY = window.scrollY;
+    bg.style.backgroundPosition = `center ${-scrollY * 0.44}px`;
+});
+</script>
+<script src="scripts/script.js"></script>
+</body>
+</html>
