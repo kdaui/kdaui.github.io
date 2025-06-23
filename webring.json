@@ -1,12 +1,12 @@
 [
   {
-    "name": "kdaui's night",
-    "url": "https://kdaui.github.io",
-    "id": "siteone"
+    "name": "kdaui",
+    "url": "https://kdaui.github.io/",
+    "description": "Bro thinks he owns the night"
   },
   {
-    "name": "monochromatic Chloe",
-    "url": "https://chloechrome.github.io",
-    "id": "sitetwo"
-  },
+    "name": "Chloe",
+    "url": "https://chloechrome.github.io/",
+    "description": "Latin"
+  }
 ]
