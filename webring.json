@@ -1,4 +1,12 @@
 [
-  "https://kdaui.github.io",
-  "https://chloechrome.github.io"
+  {
+    "name": "kdaui's night",
+    "url": "https://kdaui.github.io",
+    "id": "siteone"
+  },
+  {
+    "name": "monochromatic Chloe",
+    "url": "https://chloechrome.github.io",
+    "id": "sitetwo"
+  },
 ]
