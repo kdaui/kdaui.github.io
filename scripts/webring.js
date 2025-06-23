@@ -1,28 +1,27 @@
-(async () => {
-  const ringURL = 'https://kdaui.github.io/webring.json';
-  const current = document.currentScript.getAttribute('data-id');
+(function() {
+  const WR_URL = "https://kdaui.github.io/webring.json";
 
-  try {
-    const res = await fetch(ringURL);
-    const sites = await res.json();
+  fetch(WR_URL)
+    .then(res => res.json())
+    .then(data => {
+      const current = window.location.href;
+      const index = data.findIndex(site => current.includes(site.url));
 
-    const currentIndex = sites.findIndex(site => site.id === current);
-    if (currentIndex === -1) throw new Error("Current site not found");
+      const prev = data[(index - 1 + data.length) % data.length];
+      const next = data[(index + 1) % data.length];
 
-    const prev = sites[(currentIndex - 1 + sites.length) % sites.length];
-    const next = sites[(currentIndex + 1) % sites.length];
+      const container = document.createElement("div");
+      container.style = "margin-top:20px;padding:10px;background:#111;color:#fff;text-align:center;font-family:monospace;";
+      container.innerHTML = `
+        <div>
+          <strong>Webring:</strong>
+          <a href="${prev.url}" style="color:#00f;text-decoration:underline;">Prev</a> |
+          <a href="${data[0].url}" style="color:#0f0;text-decoration:underline;">Home</a> |
+          <a href="${next.url}" style="color:#f00;text-decoration:underline;">Next</a>
+        </div>
+      `;
 
-    const wrapper = document.createElement('div');
-    wrapper.className = 'webring';
-    wrapper.innerHTML = `
-      <p>
-        <a href="${prev.url}" target="_blank">← ${prev.name}</a> | 
-        <a href="${next.url}" target="_blank">${next.name} →</a> | 
-        <a href="${ringURL}" target="_blank">Ring JSON</a>
-      </p>
-    `;
-    document.body.appendChild(wrapper);
-  } catch (err) {
-    console.error('Webring error:', err);
-  }
+      document.body.appendChild(container);
+    })
+    .catch(err => console.error("Webring error:", err));
 })();
