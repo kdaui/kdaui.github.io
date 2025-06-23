@@ -7,6 +7,8 @@
   <link rel="stylesheet" href="styles.css" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Inter&display=swap" rel="stylesheet">
   <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon" />
+  <script type="module" src="/scripts/webring-element.js"></script>
+  <link rel="stylesheet" href="/scripts/webring.css" />
 </head>
 <body>
 <!-- SCM Music Player https://www.scmplayer.net -->
@@ -143,7 +145,11 @@ data-config="{'skin':'skins/black/skin.css','volume':50,'autoplay':false,'shuffl
 		<p>Hotlink my button!</p>
 	  </div>
 	</section>
-	
+
+	<section class="webring">
+	  <h2 class="neon-heading">Webring</h2>
+	  <webring-element src="/webring.json" site="https://kdaui.github.io/"></webring-element>
+	</section>
   </main>
 
   <footer>
