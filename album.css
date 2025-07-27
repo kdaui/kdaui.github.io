@@ -1,0 +1,103 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+.title {
+  text-align: center;
+  padding: 2rem 1rem 0;
+}
+
+.header-text {
+  font-size: 3.5rem;
+  color: #aaa;
+  letter-spacing: 8px;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.home-button {
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.home-button a {
+  color: #888;
+  text-decoration: none;
+  font-size: 1.2rem;
+  padding: 0.5rem 1.5rem;
+  border-bottom: 2px solid #444;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.home-button a:hover {
+  color: #ccc;
+  border-color: #666;
+}
+
+.tion {
+  color: #666;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 1200px;
+  width: 100%;
+}
+
+.album-covers {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 2.5rem;
+  padding: 0 1rem 2rem;
+}
+
+.album {
+  background-color: #111;
+  border: 1px solid #333;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  text-align: center;
+  padding: 1rem;
+}
+
+.album:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.1);
+}
+
+.album img {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+.album h3 {
+  font-size: 1.3rem;
+  color: #bbb;
+  margin-top: 0.5rem;
+  letter-spacing: 1px;
+}
+
+.footer-container {
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  color: #444;
+  font-size: 0.9rem;
+}

@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'VT323', 'Share Tech Mono', monospace;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+.wrapper {
+  max-width: 960px;
+  width: 100%;
+  text-align: center;
+}
+
+.lain-img {
+  width: 300px;
+  height: auto;
+  image-rendering: pixelated;
+  filter: grayscale(1) contrast(1.3);
+  opacity: 0.50;
+  margin-top: 5rem;
+  display: inline-block;
+}
+
+.content-box {
+  max-width: 960px;
+  margin: 0 auto 3rem auto;
+  background: transparent;
+  padding: 1rem 2rem;
+  color: #ccc;
+  font-family: monospace, monospace;
+  position: relative;
+  z-index: 1;
+  border: none;
+  box-shadow: none;
+}
+
+h1, h2, h3 {
+  color: #ccc;
+  text-shadow: none;
+  font-weight: normal;
+  margin: 0.5rem 0;
+}
+
+p, li, a {
+	font-size: 20px;
+}
+
+a {
+  text-decoration: underline;
+  color: #ccc;
+}
+
+a:hover {
+  color: #eee;
+}
+
+.friends-scroll {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1.5rem 0;
+  color: #ccc;
+  font-size: 1.2rem;
+}
+
+.friends-scroll span {
+  background: none;
+  border: none;
+  padding: 0.2rem 0.4rem;
+  font-size: 1.7rem;
+  color: #ccc;
+}
+
+.setup-specs {
+  margin-top: 3rem;
+  text-align: left;
+  padding: 1rem;
+  border-left: 2px solid #333;
+}
+
+.spec-list {
+  list-style: none;
+  padding: 0;
+  font-size: 18px;
+}
+
+.spec-list li {
+  margin-bottom: 0.6rem;
+  display: flex;
+  align-items: center;
+}
+
+.ascii-bullet {
+  color: #f0f;
+  font-weight: bold;
+  margin-right: 0.8rem;
+  text-shadow: 0 0 3px #f0f5;
+}
+
+.widget-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.widget {
+  background: transparent;
+  padding: 0.5rem;
+  border: none;
+  max-width: 220px;
+  color: #ccc;
+  text-align: center;
+}
+
+.bsky img {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.moon-widget iframe {
+  width: 100%;
+  height: auto;
+}
+
+.hotlink textarea {
+  width: 100%;
+  height: 60px;
+  margin-top: 0.5rem;
+  background: transparent;
+  color: #ccc;
+  font-family: monospace;
+  border: none;
+  resize: none;
+  padding: 0.5rem;
+}
+
+@keyframes float {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+footer {
+  animation: float 6s ease-in-out infinite;
+  font-family: 'VT323', monospace;
+  color: #aaa;
+  text-shadow: 0 0 2px #f0f, 0 0 5px rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.1em;
+  text-align: center;
+  font-size: 1.4rem;
+}
+
+footer p {
+  margin: 0;
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
+}

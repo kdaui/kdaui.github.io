@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  background-color: #000;
+  color: #ccc;
+  font-family: 'VT323', 'Share Tech Mono', monospace;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+.wrapper {
+  max-width: 960px;
+  width: 100%;
+  text-align: center;
+}
+
+.lain-img {
+  width: 300px;
+  height: auto;
+  image-rendering: pixelated;
+  filter: grayscale(1) contrast(1.3);
+  opacity: 0.50;
+  margin-top: 5rem;
+  display: inline-block;
+}
+
+.content {
+  margin-top: 2rem;
+}
+
+h1, h2 {
+  font-weight: normal;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: #ccc;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #eee;
+}
+
+.spotify-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+iframe {
+  width: 100%;
+  height: 152px;
+  border: none;
+  border-radius: 8px;
+}
