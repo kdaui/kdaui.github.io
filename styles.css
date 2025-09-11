@@ -132,7 +132,83 @@ a {
   text-decoration: none;
 }
 
+
+@media (max-width: 768px) {
+  body {
+    overflow: auto;
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 0;
+  }
+  
+  .wrapper {
+    width: 90vw;
+    max-width: 400px;
+    height: auto;
+    min-height: 70vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .lain-img {
+    position: relative;
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 30px;
+  }
+  
+  .mids {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .mids > div {
+    position: relative;
+    width: 80%;
+    max-width: 250px;
+    padding: 12px 16px;
+    font-size: 1.4rem;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    margin: 5px 0;
+  }
+  
+  .mids > div:hover,
+  .mids > div:active {
+    background: rgba(255, 0, 255, 0.05);
+    color: #fff;
+    border-color: #aa66ff;
+    text-shadow: 0 0 6px #f0f;
+    animation: glitch 0.3s steps(2, jump-none);
+  }
+  
+  body::before {
+    background-size: 100% 4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .mids > div {
+    width: 90%;
+    padding: 15px 20px;
+    font-size: 1.6rem;
+  }
+  
+  .wrapper {
+    min-height: 60vh;
+  }
+}
 a:hover {
   color: #f9f;
   text-shadow: 0 0 2px #f0f;
+
 }
