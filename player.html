@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K D A U I . — Player</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet" />
+    <style>
+        /* Player-specific styles */
+        .player-container {
+            background-color: rgba(28, 35, 51, 0.5);
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            padding: 30px;
+            margin: 0 auto;
+            max-width: 800px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .player-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            gap: 15px;
+        }
+        
+        .spotify-logo {
+            width: 40px;
+            height: 40px;
+        }
+        
+        .player-title h1 {
+            font-size: 2.5rem;
+            color: var(--light-accent);
+            text-shadow: 0 0 10px rgba(94, 138, 191, 0.3);
+            margin: 0;
+        }
+        
+        .file-input-container {
+            margin-bottom: 30px;
+        }
+        
+        .custom-file-input {
+            background-color: rgba(20, 25, 40, 0.7);
+            border: 1px solid var(--border-color);
+            border-radius: 4px;
+            color: var(--text-primary);
+            padding: 12px 15px;
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 1rem;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .custom-file-input:hover {
+            background-color: rgba(61, 98, 153, 0.3);
+            border-color: var(--accent-blue);
+        }
+        
+        .custom-file-input:focus {
+            outline: none;
+            border-color: var(--light-accent);
+            box-shadow: 0 0 5px rgba(94, 138, 191, 0.5);
+        }
+        
+        .audio-player-container {
+            margin-top: 20px;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .custom-audio-player {
+            width: 100%;
+            background-color: rgba(20, 25, 40, 0.7);
+            border-radius: 8px;
+            padding: 15px;
+        }
+        
+        .custom-audio-player audio {
+            width: 100%;
+            filter: invert(0.8) hue-rotate(180deg);
+        }
+        
+        .now-playing {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: rgba(20, 25, 40, 0.7);
+            border-radius: 8px;
+            text-align: center;
+            color: var(--text-secondary);
+            font-style: italic;
+        }
+        
+        .player-instructions {
+            margin-bottom: 20px;
+            color: var(--text-secondary);
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="background-pattern"></div>
+    
+    <div class="site-container">
+        <header class="site-header">
+            <div class="header-content">
+                <div class="site-title">@ k d a u i .</div>
+                <nav class="main-nav">
+                    <a href="index.html" class="nav-link">About</a>
+                    <a href="manga.html" class="nav-link">Kdanga</a>
+                    <a href="music.html" class="nav-link">Kdusic</a>
+                    <a href="/tutorials" class="nav-link">Kdorials</a>
+                    <a href="/stsop" class="nav-link">Chat</a>
+                    <a href="https://github.com/kdaui" class="nav-link">KDithub</a>
+                    <a href="/backups" class="nav-link">Backups</a>
+                    <a href="/posts" class="nav-link">Terminal</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <section id="player" class="content-section active">
+                <div class="content-wrapper">                    
+                    <div class="player-container">
+                        <div class="player-title">
+                            <svg class="spotify-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                                <defs>
+                                    <linearGradient id="pinkToBlue" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" style="stop-color: #5E8ABF;" />
+                                        <stop offset="100%" style="stop-color: #3D6299;" />
+                                    </linearGradient>
+                                </defs>
+                                <circle cx="12" cy="12" r="10" fill="url(#pinkToBlue)" />
+                                <path d="M6.5 14.5c1.2-0.6 3.3-1 5.5-0.3 1.3 0.5 3 0.8 4.2 0.2" stroke="#000" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                                <path d="M6.5 17c2-1 4.5-1.2 6.5-0.3 2 0.8 4.5 0.7 6 0.2" stroke="#000" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                            </svg>
+                            <h1>Personal Player</h1>
+                        </div>
+                        
+                        <div class="player-instructions">
+                            <p>Upload your own music file to play it in your browser</p>
+                        </div>
+                        
+                        <div class="file-input-container">
+                            <input type="file" id="musicFile" accept="audio/*" class="custom-file-input">
+                        </div>
+                        
+                        <div class="audio-player-container" id="audioPlayerContainer" style="display: none;">
+                            <div class="custom-audio-player">
+                                <audio controls id="audioPlayer">
+                                    Your browser does not support the audio element.
+                                </audio>
+                            </div>
+                        </div>
+                        
+                        <div class="now-playing" id="nowPlaying" style="display: none;">
+                            Now playing: <span id="fileName"></span>
+                        </div>
+                    </div>
+                    
+                    <footer class="site-footer">
+                        "God's in his heaven. All's right with the world." - NERV
+                    </footer>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const musicFileInput = document.getElementById('musicFile');
+            const audioPlayer = document.getElementById('audioPlayer');
+            const audioPlayerContainer = document.getElementById('audioPlayerContainer');
+            const nowPlaying = document.getElementById('nowPlaying');
+            const fileName = document.getElementById('fileName');
+
+            musicFileInput.addEventListener('change', function(e) {
+                const file = e.target.files[0];
+                if (file) {
+                    const url = URL.createObjectURL(file);
+                    audioPlayer.src = url;
+                    audioPlayerContainer.style.display = 'block';
+                    nowPlaying.style.display = 'block';
+                    fileName.textContent = file.name;
+                    audioPlayer.play();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
