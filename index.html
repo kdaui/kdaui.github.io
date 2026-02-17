@@ -96,8 +96,8 @@
           </div>
           
           <footer class="site-footer" onclick="getEvaQuote()" style="cursor: pointer;" title="Click for new quote">
-		  <span id="eva-quote">"God's in his heaven. All's right with the world."</span> 
-		  <span id="eva-author">- NERV</span>
+		  <span id="eva-quote"></span> 
+		  <span id="eva-author"></span>
 		</footer>
         </div>
       </section>
@@ -105,7 +105,31 @@
   </div>
 
   <script src="https://kdaui.github.io/scripts/script.js"></script>
-</body>
+	<script>
+  async function getEvaQuote() {
+    try {
+      const response = await fetch('https://raw.githubusercontent.com/kdaui/Quotes_API/main/db.json');
+      
+      if (!response.ok) throw new Error("Failed to load quotes");
 
+      const data = await response.json();
+      const quotesArray = data.quotes;
+
+      const randomQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
+
+      document.getElementById('eva-quote').innerText = `"${randomQuote.text}"`;
+      document.getElementById('eva-author').innerText = `- ${randomQuote.character}`;
+      
+    } catch (error) {
+      console.log("Error loading Eva quote:", error);
+      // Fallback quote
+      document.getElementById('eva-quote').innerText = "God's in his heaven. All's right with the world.";
+      document.getElementById('eva-author').innerText = "- NERV";
+    }
+  }
+  getEvaQuote();
+</script>
+</body>
 </html>
+
 
