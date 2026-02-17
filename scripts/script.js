@@ -73,7 +73,7 @@ async function fetchLastTrack() {
     if (!lastFmDiv) return;
 
     try {
-        const response = await fetch("/api/lastfm"); 
+        const response = await fetch("https://lastfm-api-three.vercel.app/api/lastfm"); 
         if (!response.ok) throw new Error("Failed to fetch");
 
         const data = await response.json();
@@ -110,4 +110,5 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
+
 
