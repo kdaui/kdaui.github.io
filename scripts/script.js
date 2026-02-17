@@ -92,8 +92,8 @@ async function fetchLastTrack() {
 
         lastFmDiv.innerHTML = `
             <h3>${isPlaying ? "Now Playing" : "Recently Played"}</h3>
-            <div style="display: flex; align-items: center; gap: 12px;">
-                <img src="${albumCover}" style="width: 60px; border-radius: 5px;" alt="Album Art">
+            <div style="display: flex; align-items: center">
+                <img src="${albumCover}" style="width: 80px" alt="Album Art">
                 <div>
                     <strong>${trackName}</strong><br>
                     <small>${artistName}</small>
@@ -110,5 +110,6 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
+
 
 
