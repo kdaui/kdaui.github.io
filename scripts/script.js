@@ -69,66 +69,45 @@ function timeAgo(date) {
 }
 
 async function fetchLastTrack() {
-    try {
-        // URL of the text file containing the Last.fm API link
-        const fileUrl = 'https://lastfm-api-three.vercel.app/lastfm_url.txt ';
-        
-        // Fetch the content of the text file
-        const fileResponse = await fetch(fileUrl);
-        const apiUrl = await fileResponse.text();  // Read the content of the text file
+    const lastFmDiv = document.getElementById("last-fm");
+    if (!lastFmDiv) return;
 
-        // Ensure lastFmDiv exists
-        const lastFmDiv = document.getElementById("last-fm");
-        if (!lastFmDiv) {
-            console.error("Element with ID 'last-fm' not found.");
+    try {
+        const response = await fetch("/api/lastfm"); 
+        if (!response.ok) throw new Error("Failed to fetch");
+
+        const data = await response.json();
+        const track = data.recenttracks.track[0];
+
+        if (!track) {
+            lastFmDiv.innerHTML = "<p>No recent tracks.</p>";
             return;
         }
 
-        // Fetch data from the API link obtained from the text file
-        const response = await fetch(apiUrl.trim());
-        if (!response.ok) {
-            throw new Error("Failed to fetch Last.fm data");
-        }
+        // Logic: Last.fm adds an '@attr' object if a track is currently playing
+        const isPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+        const trackName = track.name;
+        const artistName = track.artist['#text'];
+        const albumCover = track.image[2]['#text'] || 'fallback-image-url.png';
 
-        const data = await response.json();
-        console.log("Response Data:", data); // Log the full response for debugging
-
-        // Ensure the recent tracks exist
-        if (data.recenttracks.track && data.recenttracks.track.length > 0) {
-            // Get the most recent track
-            const recentTrack = data.recenttracks.track[0];
-            // Check if the track is currently playing or was recently played
-            const isPlaying = !recentTrack.date; 
-
-            // Extract relevant information
-            const trackName = recentTrack.name;
-            const artistName = recentTrack.artist['#text'];
-            const albumCover = recentTrack.image[2]['#text']; // Medium size image
-
-            // Append track content under the title
-            lastFmDiv.innerHTML = `
-                <h3>Now Playing</h3>
-                <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <img src="${albumCover}" alt="${artistName}'s album cover" style="width: 80px; height: 80px; object-fit: cover; border-radius: 10px; margin-right: 15px;">
-                    <div>
-                        <strong style="font-size: 1.2em;">${trackName}</strong><br>
-                        <small style="font-size: 1.1em;">${artistName}</small>
-                    </div>
+        lastFmDiv.innerHTML = `
+            <h3>${isPlaying ? "Now Playing" : "Recently Played"}</h3>
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <img src="${albumCover}" style="width: 60px; border-radius: 5px;" alt="Album Art">
+                <div>
+                    <strong>${trackName}</strong><br>
+                    <small>${artistName}</small>
                 </div>
-                ${isPlaying ? '<p>Currently playing!</p>' : '<p>Just listened to this track.</p>'}
-            `;
-        } else {
-            console.error("No recent tracks found.");
-            lastFmDiv.innerHTML = "<h3>Now Playing</h3><p>No recent tracks found.</p>";
-        }
+            </div>
+        `;
     } catch (error) {
-        console.error("Error loading Last.fm data:", error);
-        document.getElementById("last-fm").innerHTML = "<h3>Now Playing</h3><p>Error loading data.</p>";
+        console.error("Error:", error);
+        lastFmDiv.innerHTML = "<p>Music status offline.</p>";
     }
 }
-
 // Call both functions when the page loads
 document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
+
