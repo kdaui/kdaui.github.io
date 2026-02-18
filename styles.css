@@ -330,6 +330,13 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.friends {
+  grid-column: 1 / span 3;
+  grid-row: 3;
+  max-width: 600px;
+  justify-self: center;
+}
+
 .site-footer {
   text-align: center;
   padding: 30px;
@@ -450,4 +457,5 @@ a:hover {
   .specs-section {
     padding: 25px;
   }
+
 }
