@@ -381,6 +381,11 @@ a:hover {
     grid-column: 1 / span 2;
     grid-row: 3;
   }
+  .friends {
+    grid-column: 1 / span 2;
+    grid-row: 4;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 768px) {
@@ -435,6 +440,11 @@ a:hover {
     grid-row: 4;
     max-width: 100%;
   }
+  .friends {
+    grid-column: 1;
+    grid-row: 5;
+    max-width: 100%;
+  }
 }
 
 @media (max-width: 480px) {
@@ -459,3 +469,4 @@ a:hover {
   }
 
 }
+
