@@ -1,23 +1,18 @@
 async function fetchBlueskyPost() {
     try {
         const response = await fetch("https://api-amber-psi.vercel.app/api/fetchBluesky");
-        if (!response.ok) {
-            throw new Error("Failed to fetch Bluesky post");
-        }
+        if (!response.ok) throw new Error("Failed to fetch Bluesky post");
         
         const data = await response.json();
-        console.log("Response Data:", data); // Log the full response for debugging
-
-        // Check the feed exists and has posts
-        const bskyDiv = document.querySelector(".bsky"); // Select by class
+        const bskyDiv = document.querySelector(".bsky");
+        
         let contentDiv = bskyDiv.querySelector(".bsky-content");
         if (!contentDiv) {
             contentDiv = document.createElement("div");
             contentDiv.className = "bsky-content";
             bskyDiv.appendChild(contentDiv);
         }
-        contentDiv.innerHTML = "";
-        
+
         if (data.feed && data.feed.length > 0) {
             const recentPost = data.feed[0].post;
             const postText = recentPost.record.text;
@@ -110,6 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
+
 
 
 
