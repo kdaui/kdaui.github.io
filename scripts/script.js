@@ -1,47 +1,52 @@
 async function fetchBlueskyPost() {
     try {
         const response = await fetch("https://api-amber-psi.vercel.app/api/fetchBluesky");
-        if (!response.ok) throw new Error("Failed to fetch Bluesky post");
+        if (!response.ok) {
+            throw new Error("Failed to fetch Bluesky post");
+        }
         
         const data = await response.json();
-        const bskyDiv = document.querySelector(".bsky");
-        
-        let contentDiv = bskyDiv.querySelector(".bsky-content");
-        if (!contentDiv) {
-            contentDiv = document.createElement("div");
-            contentDiv.className = "bsky-content";
-            bskyDiv.appendChild(contentDiv);
-        }
+        console.log("Response Data:", data); // Log the full response for debugging
+
+        // Ensure the feed exists and has posts
+        const bskyDiv = document.querySelector(".bsky"); // Select by class
+        bskyDiv.innerHTML = "<h3>Bsky-ing</h3>"; // Keep the title
 
         if (data.feed && data.feed.length > 0) {
+            // Get the most recent post
             const recentPost = data.feed[0].post;
+
+            // Extract relevant information
             const postText = recentPost.record.text;
             const postAuthor = recentPost.author.displayName;
             const postCreatedAt = new Date(recentPost.createdAt);
             const timeSince = timeAgo(postCreatedAt);
-            const postId = recentPost.uri.split('/').pop();
+            const postId = recentPost.uri.split('/').pop(); // Get the post ID
             const authorHandle = recentPost.author.handle;
             const avatarUrl = recentPost.author.avatar;
+
+            // Create a web-compatible Bluesky URL
             const postUrl = `https://bsky.app/profile/${authorHandle}/post/${postId}`;
 
-            contentDiv.innerHTML = `
-                <div style="display: flex; align-items: flex-start; gap: 10px; text-align: left; margin-top: 10px;">
-                    <img src="${avatarUrl}" alt="avatar" style="width: 50px; height: 50px; border-radius: 50%;">
+            // Append post content under the title
+            bskyDiv.innerHTML += `
+                <div style="display: flex; align-items: center; margin-bottom: 10px;">
+                    <img src="${avatarUrl}" alt="${postAuthor}'s avatar"">
                     <div>
-                        <strong>${postAuthor}</strong> <small>@${authorHandle}</small><br>
-                        <small style="opacity: 0.7;">${timeSince}</small>
-                        <div style="margin: 5px 0;">${postText}</div>
-                        <small><a href="${postUrl}" target="_blank">View on Bluesky</a></small>
+                        <strong>${postAuthor}</strong> • 
+                        <small title="${postCreatedAt.toLocaleString()}">${timeSince}</small>
+                        <div>${postText}</div>
+                        <small><a href="${postUrl}" target="_blank">View Post</a></small>
                     </div>
                 </div>
             `;
         } else {
-            contentDiv.innerHTML = "<p>No posts found.</p>";
+            console.error("No posts found in the feed.");
+            bskyDiv.innerHTML += "<p>No posts found.</p>";
         }
     } catch (error) {
-        console.error("Error:", error);
-        const content = document.querySelector(".bsky-content");
-        if(content) content.innerHTML = "<p>Error loading post.</p>";
+        console.error("Error loading post:", error);
+        document.querySelector(".bsky").innerHTML = "<h3>Bsky-ing</h3><p>Error loading post.</p>";
     }
 }
 
@@ -105,9 +110,3 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
-
-
-
-
-
-
