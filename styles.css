@@ -261,7 +261,6 @@ a:hover {
 .widget-container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: auto auto;
   gap: 30px;
   margin-bottom: 60px;
   align-items: start;
@@ -304,10 +303,9 @@ a:hover {
 }
 
 .hotlink {
-  grid-column: 1 / span 3;
+  grid-column: 1; 
   grid-row: 2;
-  max-width: 600px;
-  justify-self: center;
+  width: 100%;
 }
 
 .hotlink textarea {
@@ -330,10 +328,25 @@ a:hover {
   margin-bottom: 10px;
 }
 
+.buttons-wall {
+  grid-column: 2 / span 2;
+  grid-row: 2;
+  text-align: center;
+}
+
+.button-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  padding-top: 10px;
+}
+
 .friends {
   grid-column: 1 / span 3;
   grid-row: 3;
-  max-width: 600px;
+  width: 100%;
+  max-width: 100%;
   justify-self: center;
 }
 
@@ -378,13 +391,18 @@ a:hover {
   }
   
   .hotlink {
-    grid-column: 1 / span 2;
+    grid-column: 1;
     grid-row: 3;
   }
+  
+  .buttons-wall {
+    grid-column: 2;
+    grid-row: 3;
+  }
+  
   .friends {
     grid-column: 1 / span 2;
     grid-row: 4;
-    max-width: 100%;
   }
 }
 
@@ -425,25 +443,9 @@ a:hover {
     grid-template-columns: 1fr;
   }
   
-  .bsky {
-    grid-column: 1;
-    grid-row: 2;
-  }
-  
-  .moon-widget {
-    grid-column: 1;
-    grid-row: 3;
-  }
-  
-  .hotlink {
-    grid-column: 1;
-    grid-row: 4;
-    max-width: 100%;
-  }
-  .friends {
-    grid-column: 1;
-    grid-row: 5;
-    max-width: 100%;
+  .hotlink, .buttons-wall, .friends, .bsky, .moon-widget {
+    grid-column: 1 !important;
+    grid-row: auto !important;
   }
 }
 
@@ -469,3 +471,4 @@ a:hover {
   }
 
 }
+
