@@ -260,7 +260,7 @@ a:hover {
 
 .widget-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: auto auto;
   gap: 30px;
   margin-bottom: 60px;
@@ -273,6 +273,7 @@ a:hover {
   border-radius: 8px;
   padding: 25px;
   text-align: center;
+  min-height: 350px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -293,6 +294,12 @@ a:hover {
   padding-bottom: 10px;
 }
 
+.twitter-scroll-container {
+  overflow-y: auto;
+  height: 300px;
+  border-radius: 5px;
+}
+
 .moon-widget {
   grid-column: 3;
   grid-row: 1;
@@ -304,7 +311,7 @@ a:hover {
 }
 
 .hotlink {
-  grid-column: 1 / span 3;
+  grid-column: 1 / span 4;
   grid-row: 2;
   max-width: 600px;
   justify-self: center;
@@ -365,6 +372,12 @@ a:hover {
   .site-container {
     padding: 30px 40px;
   }
+  .widget-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .hotlink, .friends {
+    grid-column: 1 / span 2;
+  }
 }
 
 @media (max-width: 900px) {
@@ -420,6 +433,15 @@ a:hover {
   }
 }
 
+@media (max-width: 650px) {
+  .widget-container {
+    grid-template-columns: 1fr;
+  }
+  .hotlink, .friends {
+    grid-column: 1;
+  }
+}
+
 @media (max-width: 600px) {
   .widget-container {
     grid-template-columns: 1fr;
@@ -469,4 +491,5 @@ a:hover {
   }
 
 }
+
 
