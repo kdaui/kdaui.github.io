@@ -260,8 +260,9 @@ a:hover {
 
 .widget-container {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: 30px;
   margin-bottom: 60px;
   align-items: start;
 }
@@ -270,10 +271,11 @@ a:hover {
   background-color: rgba(28, 35, 51, 0.5);
   border: 1px solid var(--border-color);
   border-radius: 8px;
-  padding: 20px;
+  padding: 25px;
   text-align: center;
-  min-height: 350px;
-  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .bsky {
@@ -291,11 +293,6 @@ a:hover {
   padding-bottom: 10px;
 }
 
-.twitter-scroll-container {
-  height: 300px;
-  overflow-y: auto;
-}
-
 .moon-widget {
   grid-column: 3;
   grid-row: 1;
@@ -307,10 +304,10 @@ a:hover {
 }
 
 .hotlink {
-  grid-column: 1 / span 4; 
+  grid-column: 1 / span 3;
+  grid-row: 2;
+  max-width: 600px;
   justify-self: center;
-  width: 100%;
-  max-width: 800px;
 }
 
 .hotlink textarea {
@@ -334,10 +331,10 @@ a:hover {
 }
 
 .friends {
-  grid-column: 1 / span 4; 
+  grid-column: 1 / span 3;
+  grid-row: 3;
+  max-width: 600px;
   justify-self: center;
-  width: 100%;
-  max-width: 800px;
 }
 
 .site-footer {
@@ -367,12 +364,6 @@ a:hover {
 @media (max-width: 1200px) {
   .site-container {
     padding: 30px 40px;
-  }
-  .widget-container {
-    grid-template-columns: 1fr 1fr;
-  }
-  .hotlink, .friends {
-    grid-column: 1 / span 2;
   }
 }
 
@@ -427,10 +418,6 @@ a:hover {
   .widget-container {
     grid-template-columns: 1fr;
   }
-
-  .hotlink, .friends {
-    grid-column: 1;
-  }
 }
 
 @media (max-width: 600px) {
@@ -482,6 +469,3 @@ a:hover {
   }
 
 }
-
-
-
