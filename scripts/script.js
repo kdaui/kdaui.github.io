@@ -1,37 +1,27 @@
 async function fetchBlueskyPost() {
     try {
         const response = await fetch("https://api-amber-psi.vercel.app/api/fetchBluesky");
-        if (!response.ok) {
-            throw new Error("Failed to fetch Bluesky post");
-        }
+        if (!response.ok) throw new Error("Failed to fetch Bluesky post");
         
         const data = await response.json();
-        console.log("Response Data:", data); // Log the full response for debugging
 
-        // Ensure the feed exists and has posts
-        const bskyDiv = document.querySelector(".bsky"); // Select by class
-        bskyDiv.innerHTML = "<h3>Bsky-ing</h3>"; // Keep the title
+        const bskyDiv = document.querySelector(".bsky"); 
+        bskyDiv.innerHTML = "<h3>Bsky-ing</h3>"; 
 
         if (data.feed && data.feed.length > 0) {
-            // Get the most recent post
             const recentPost = data.feed[0].post;
-
-            // Extract relevant information
             const postText = recentPost.record.text;
             const postAuthor = recentPost.author.displayName;
             const postCreatedAt = new Date(recentPost.createdAt);
             const timeSince = timeAgo(postCreatedAt);
-            const postId = recentPost.uri.split('/').pop(); // Get the post ID
+            const postId = recentPost.uri.split('/').pop(); 
             const authorHandle = recentPost.author.handle;
             const avatarUrl = recentPost.author.avatar;
-
-            // Create a web-compatible Bluesky URL
             const postUrl = `https://bsky.app/profile/${authorHandle}/post/${postId}`;
 
-            // Append post content under the title
             bskyDiv.innerHTML += `
                 <div style="display: flex; align-items: center; margin-bottom: 10px;">
-                    <img src="${avatarUrl}" alt="${postAuthor}'s avatar"">
+                    <img src="${avatarUrl}" alt="${postAuthor}'s avatar" style="width:40px; height:40px; border-radius:50%; margin-right:10px;">
                     <div>
                         <strong>${postAuthor}</strong> • 
                         <small title="${postCreatedAt.toLocaleString()}">${timeSince}</small>
@@ -41,7 +31,6 @@ async function fetchBlueskyPost() {
                 </div>
             `;
         } else {
-            console.error("No posts found in the feed.");
             bskyDiv.innerHTML += "<p>No posts found.</p>";
         }
     } catch (error) {
@@ -50,22 +39,30 @@ async function fetchBlueskyPost() {
     }
 }
 
-// Function to calculate time since the post was created
 function timeAgo(date) {
-    const now = new Date();
-    const seconds = Math.floor((now - date) / 1000);
-    let interval = Math.floor(seconds / 31536000);
-    
-    if (interval > 1) return `${interval} years ago`;
-    interval = Math.floor(seconds / 2592000);
-    if (interval > 1) return `${interval} months ago`;
-    interval = Math.floor(seconds / 86400);
-    if (interval > 1) return `${interval} days ago`;
-    interval = Math.floor(seconds / 3600);
-    if (interval > 1) return `${interval} hours ago`;
-    interval = Math.floor(seconds / 60);
-    if (interval > 1) return `${interval} minutes ago`;
-    return `${seconds} seconds ago`;
+    const formatter = new Intl.RelativeTimeFormat('en', {
+        numeric: 'auto', 
+        style: 'long',
+    });
+
+    const DIVISIONS = [
+        { amount: 60, name: 'second' },
+        { amount: 60, name: 'minute' },
+        { amount: 24, name: 'hour' },
+        { amount: 7, name: 'day' },
+        { amount: 4.34524, name: 'week' },
+        { amount: 12, name: 'month' },
+        { amount: Infinity, name: 'year' }
+    ];
+
+    let duration = (date - new Date()) / 1000;
+
+    for (const division of DIVISIONS) {
+        if (Math.abs(duration) < division.amount) {
+            return formatter.format(Math.round(duration), division.name);
+        }
+        duration /= division.amount;
+    }
 }
 
 async function fetchLastTrack() {
@@ -84,8 +81,16 @@ async function fetchLastTrack() {
             return;
         }
 
-        // Logic: Last.fm adds an '@attr' object if a track is currently playing
         const isPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
+        
+        let timeDisplay = ""; 
+        if (isPlaying) {
+            timeDisplay = "Listening right now";
+        } else if (track.date && track.date.uts) {
+            const lastPlayedDate = new Date(track.date.uts * 1000);
+            timeDisplay = `Last played ${timeAgo(lastPlayedDate)}`;
+        }
+
         const trackName = track.name;
         const artistName = track.artist['#text'];
         const albumCover = track.image[2]['#text'] || 'fallback-image-url.png';
@@ -93,19 +98,20 @@ async function fetchLastTrack() {
         lastFmDiv.innerHTML = `
             <h3>${isPlaying ? "Now Playing" : "Recently Played"}</h3>
             <div style="display: flex; align-items: center; gap: 15px">
-                <img src="${albumCover}" style="width: 100px" alt="Album Art">
+                <img src="${albumCover}" style="width: 80px; border-radius: 8px;" alt="Album Art">
                 <div>
-                    <strong>${trackName}</strong><br>
-                    <small>${artistName}</small>
+                    <div style="font-weight: bold;">${trackName}</div>
+                    <div style="font-size: 0.9em; opacity: 0.8;">${artistName}</div>
+                    <div style="font-size: 0.8em; color: #888; margin-top: 4px;">${timeDisplay}</div>
                 </div>
             </div>
         `;
     } catch (error) {
         console.error("Error:", error);
-        lastFmDiv.innerHTML = "<p>Music status offline.</p>";
+        lastFmDiv.innerHTML = "<h3>Music</h3><p>Status offline.</p>";
     }
 }
-// Call both functions when the page loads
+
 document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
