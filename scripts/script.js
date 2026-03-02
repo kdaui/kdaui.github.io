@@ -4,16 +4,19 @@ async function fetchBlueskyPost() {
         if (!response.ok) throw new Error("Failed to fetch Bluesky post");
         
         const data = await response.json();
-
         const bskyDiv = document.querySelector(".bsky"); 
         bskyDiv.innerHTML = "<h3>Bsky-ing</h3>"; 
 
         if (data.feed && data.feed.length > 0) {
             const recentPost = data.feed[0].post;
+            
+            // Try different possible date fields from the Bluesky API
+            const rawDate = recentPost.record?.createdAt || recentPost.indexedAt || recentPost.createdAt;
+            const postCreatedAt = new Date(rawDate);
+            const timeSince = timeAgo(postCreatedAt);
+
             const postText = recentPost.record.text;
             const postAuthor = recentPost.author.displayName;
-            const postCreatedAt = new Date(recentPost.createdAt);
-            const timeSince = timeAgo(postCreatedAt);
             const postId = recentPost.uri.split('/').pop(); 
             const authorHandle = recentPost.author.handle;
             const avatarUrl = recentPost.author.avatar;
@@ -40,6 +43,11 @@ async function fetchBlueskyPost() {
 }
 
 function timeAgo(date) {
+    // FIX: If the date is invalid, return a fallback instead of "undefined"
+    if (!date || isNaN(date.getTime())) {
+        return "recently";
+    }
+
     const formatter = new Intl.RelativeTimeFormat('en', {
         numeric: 'auto', 
         style: 'long',
@@ -63,6 +71,8 @@ function timeAgo(date) {
         }
         duration /= division.amount;
     }
+    
+    return "some time ago"; // Final fallback
 }
 
 async function fetchLastTrack() {
