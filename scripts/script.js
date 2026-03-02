@@ -102,7 +102,7 @@ async function fetchLastTrack() {
 
         const trackName = track.name;
         const artistName = track.artist['#text'];
-        const albumCover = track.image[2]['#text'] || 'fallback-image-url.png';
+        const albumCover = track.image[2]['#text'] || '/assets/images/fallback-image-url.png';
 
         lastFmDiv.innerHTML = `
             <h3>${isPlaying ? "Now Playing" : "Recently Played"}</h3>
@@ -125,4 +125,5 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
+
 
