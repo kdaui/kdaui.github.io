@@ -43,7 +43,6 @@ async function fetchBlueskyPost() {
 }
 
 function timeAgo(date) {
-    // FIX: If the date is invalid, return a fallback instead of "undefined"
     if (!date || isNaN(date.getTime())) {
         return "recently";
     }
@@ -126,3 +125,4 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
+
