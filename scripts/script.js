@@ -2,22 +2,21 @@ async function fetchBlueskyPost() {
     try {
         const response = await fetch("https://api-amber-psi.vercel.app/api/fetchBluesky");
         if (!response.ok) throw new Error("Failed to fetch Bluesky post");
-        
+
         const data = await response.json();
-        const bskyDiv = document.querySelector(".bsky"); 
-        bskyDiv.innerHTML = "<h3>Bsky-ing</h3>"; 
+        const bskyDiv = document.querySelector(".bsky");
+        bskyDiv.innerHTML = "<h3>Bsky-ing</h3>";
 
         if (data.feed && data.feed.length > 0) {
             const recentPost = data.feed[0].post;
-            
-            // Try different possible date fields from the Bluesky API
+
             const rawDate = recentPost.record?.createdAt || recentPost.indexedAt || recentPost.createdAt;
             const postCreatedAt = new Date(rawDate);
             const timeSince = timeAgo(postCreatedAt);
 
-            const postText = recentPost.record.text;
+            const postText = recentPost.record?.text || 'No text found';
             const postAuthor = recentPost.author.displayName;
-            const postId = recentPost.uri.split('/').pop(); 
+            const postId = recentPost.uri.split('/').pop();
             const authorHandle = recentPost.author.handle;
             const avatarUrl = recentPost.author.avatar;
             const postUrl = `https://bsky.app/profile/${authorHandle}/post/${postId}`;
@@ -48,7 +47,7 @@ function timeAgo(date) {
     }
 
     const formatter = new Intl.RelativeTimeFormat('en', {
-        numeric: 'auto', 
+        numeric: 'auto',
         style: 'long',
     });
 
@@ -70,8 +69,8 @@ function timeAgo(date) {
         }
         duration /= division.amount;
     }
-    
-    return "some time ago"; // Final fallback
+
+    return "some time ago";
 }
 
 async function fetchLastTrack() {
@@ -79,7 +78,7 @@ async function fetchLastTrack() {
     if (!lastFmDiv) return;
 
     try {
-        const response = await fetch("https://lastfm-api-three.vercel.app/api/lastfm"); 
+        const response = await fetch("https://lastfm-api-three.vercel.app/api/lastfm");
         if (!response.ok) throw new Error("Failed to fetch");
 
         const data = await response.json();
@@ -91,8 +90,8 @@ async function fetchLastTrack() {
         }
 
         const isPlaying = track['@attr'] && track['@attr'].nowplaying === 'true';
-        
-        let timeDisplay = ""; 
+
+        let timeDisplay = "";
         if (isPlaying) {
             timeDisplay = "Listening right now";
         } else if (track.date && track.date.uts) {
@@ -125,5 +124,3 @@ document.addEventListener("DOMContentLoaded", () => {
     fetchBlueskyPost();
     fetchLastTrack();
 });
-
-
