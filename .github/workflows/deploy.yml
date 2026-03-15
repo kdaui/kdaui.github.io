@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v3
       
       - name: Deploy to Nekoweb
-        uses: mp-pinheiro/nekoweb-deploy@v1
+        uses: mp-pinheiro/nekoweb-deploy@0.2.8
         with:
           api-key: ${{ secrets.NEKOWEB_API_KEY }}
           build-dir: ./
