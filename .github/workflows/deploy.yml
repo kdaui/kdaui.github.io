@@ -1,21 +1,17 @@
-on: [push]
+name: Nekoing it
+
+on:
+  push:
+    branches: [ main ]
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
-    name: deploy2nekoweb
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-        
-      # your build step here
-      - name: Clean up for deploy
-        run: rm -rf .git .github
-        
-      - name: deploy2nekoweb
-        uses: indiefellas/deploy2nekoweb@main
+      - uses: actions/checkout@v3
+      
+      - name: Deploy to Nekoweb
+        uses: mp-pinheiro/nekoweb-deploy@v1
         with:
-          nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
-          nekoweb-domain: 'kdaui.nekoweb.org'
-          nekoweb-username: 'kdaui'
-          directory: './'
+          api-key: ${{ secrets.NEKOWEB_API_KEY }}
+          build-dir: ./
