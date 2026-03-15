@@ -16,4 +16,4 @@ jobs:
           nekoweb-api-key: ${{ secrets.NEKOWEB_API_KEY }}
           nekoweb-domain: 'kdaui.nekoweb.org'
           nekoweb-username: 'kdaui'
-          directory: 'public'
+          directory: ''
