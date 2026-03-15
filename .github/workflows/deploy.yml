@@ -9,6 +9,8 @@ jobs:
         uses: actions/checkout@v4
         
       # your build step here
+      - name: Clean up for deploy
+        run: rm -rf .git .github
         
       - name: deploy2nekoweb
         uses: indiefellas/deploy2nekoweb@main
