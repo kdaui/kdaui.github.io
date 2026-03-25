@@ -1,5 +1,6 @@
 .linux-link {
   cursor: pointer;
+  color: inherit;
 }
 .linux-link:hover {
   text-decoration: underline;
