@@ -163,7 +163,7 @@
       document.body.innerHTML = originalContent;
     };
 
-    async function getEvaQuote() {
+    window.getEvaQuote = async function() {
       try {
         const response = await fetch('https://raw.githubusercontent.com/kdaui/Quotes_API/main/db.json');
         if (!response.ok) throw new Error("Failed to load quotes");
