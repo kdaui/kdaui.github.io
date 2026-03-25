@@ -1,3 +1,10 @@
+.linux-link {
+  cursor: pointer;
+}
+.linux-link:hover {
+  text-decoration: underline;
+}
+
 :root {
   --primary-dark: #0A0F1C;
   --secondary-dark: #141928;

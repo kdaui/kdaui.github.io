@@ -90,7 +90,7 @@
             	<div class="spec-item"><span class="spec-label">RAM:</span> (Model Unknown) 16GB 2667MHz DDR4</div>
             	<div class="spec-item"><span class="spec-label">GPU:</span> Intel WhiskeyLake-U GT2 [UHD Graphics 620]</div>
             	<div class="spec-item"><span class="spec-label">Storage:</span> SK hynix SC311 Sata 512GB</div>
-            	<div class="spec-item"><span class="spec-label">OS:</span> Fedora Linux 43 (KDE Plasma Desktop Edition)</div>
+            	<div class="spec-item"><span class="spec-label">OS:</span> Fedora <span id="linux-trigger" class="linux-link">Linux</span>&nbsp;43 (KDE Plasma Desktop Edition)</div>
             </div>
           </section>
 
@@ -148,29 +148,37 @@
 
   <script src="https://kdaui.github.io/scripts/script.js"></script>
 	<script>
-  async function getEvaQuote() {
-    try {
-      const response = await fetch('https://raw.githubusercontent.com/kdaui/Quotes_API/main/db.json');
-      
-      if (!response.ok) throw new Error("Failed to load quotes");
+  document.addEventListener("DOMContentLoaded", function() {
+    const gnuCopypasta = "\"I'd just like to interject for a moment. What you're referring to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX semantics.\n\nMany computer users have run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called Linux, and many of its users are not aware that it is basically the GNU system, developed by the GNU Project.\n\nLinux really consists of GNU apps, utilities and libraries — many components have been developed by the GNU project. There's a fundamental piece to the system: the C compiler. These days, you can't have an operating system without gcc, make, gdb, glibc, and all the rest — Linux would be nothing without GNU.\n\nAn operating system is supposed to be a collection of useful apps, C libraries, development environments, system daemons, and window managers — making a complete, useful and practical environment. Linux alone isn't enough to call it an OS. It needs the GNU utilities to become useful. It needs gmake, and gdb, and the rest.\n\nThis is why we call it GNU/Linux — not because Linux alone isn't significant, but because Linux plus GNU is the full OS. The GNU system has just as much claim to the title \"operating system\" as Linux does.\n\nThank you for listening.\"\n\n— Richard Stallman";
 
-      const data = await response.json();
-      const quotesArray = data.quotes;
+    let originalContent = '';
 
-      const randomQuote = quotesArray[Math.floor(Math.random() * quotesArray.length)];
+    document.getElementById('linux-trigger').addEventListener('click', function(e) {
+      e.preventDefault();
+      originalContent = document.body.innerHTML;
+      document.body.innerHTML = '<div class="background-pattern"></div><div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 40px; box-sizing: border-box;"><div style="font-family: \'Share Tech Mono\', monospace; background-color: rgba(28, 35, 51, 0.9); border: 1px solid #2A3F5F; border-radius: 8px; padding: 40px; color: #B8C5D6; max-width: 800px; white-space: pre-wrap; line-height: 1.8;">' + gnuCopypasta + '</div></div><button onclick="goBack()" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; font-family: \'Share Tech Mono\', monospace; background: #3D6299; border: 1px solid #5E8ABF; border-radius: 5px; color: #B8C5D6; cursor: pointer;">Go Back</button>';
+    });
 
-      document.getElementById('eva-quote').innerText = `"${randomQuote.text}"`;
-      document.getElementById('eva-author').innerText = `- ${randomQuote.character}`;
-      
-    } catch (error) {
-      console.log("Error loading Eva quote:", error);
-      // Fallback quote
-      document.getElementById('eva-quote').innerText = "God's in his heaven. All's right with the world.";
-      document.getElementById('eva-author').innerText = "- NERV";
+    window.goBack = function() {
+      document.body.innerHTML = originalContent;
+    };
+
+    async function getEvaQuote() {
+      try {
+        const response = await fetch('https://raw.githubusercontent.com/kdaui/Quotes_API/main/db.json');
+        if (!response.ok) throw new Error("Failed to load quotes");
+        const data = await response.json();
+        const randomQuote = data.quotes[Math.floor(Math.random() * data.quotes.length)];
+        document.getElementById('eva-quote').innerText = '"' + randomQuote.text + '"';
+        document.getElementById('eva-author').innerText = '- ' + randomQuote.character;
+      } catch (error) {
+        document.getElementById('eva-quote').innerText = "God's in his heaven. All's right with the world.";
+        document.getElementById('eva-author').innerText = "- NERV";
+      }
     }
-  }
-  getEvaQuote();
-</script>
+    getEvaQuote();
+  });
+  </script>
 </body>
 </html>
 
