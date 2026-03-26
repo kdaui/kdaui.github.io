@@ -1,6 +1,7 @@
 .linux-link {
   cursor: pointer;
   color: inherit;
+  vertical-align: baseline;
 }
 .linux-link:hover {
   text-decoration: underline;
@@ -262,22 +263,26 @@ a:hover {
 }
 
 .specs-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .spec-item {
   display: flex;
   align-items: center;
   font-size: 1.15rem;
+  padding: 12px 15px;
+  background-color: rgba(20, 25, 40, 0.4);
+  border-radius: 6px;
+  border-left: 3px solid var(--accent-blue);
 }
 
 .spec-label {
   font-weight: bold;
   color: var(--light-accent);
   margin-right: 15px;
-  min-width: 90px;
+  min-width: 120px;
   font-size: 1.1rem;
 }
 
