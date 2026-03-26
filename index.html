@@ -153,6 +153,17 @@
 
     let originalContent = '';
 
+    function triggerLinuxCopypasta(e) {
+      e.preventDefault();
+      originalContent = document.body.innerHTML;
+      document.body.innerHTML = '<div class="background-pattern"></div><div style="display: flex; justify-content: center; align-items: center; min-height: 100vh; padding: 40px; box-sizing: border-box;"><div style="font-family: "Share Tech Mono", monospace; background-color: rgba(28, 35, 51, 0.9); border: 1px solid #2A3F5F; border-radius: 8px; padding: 40px; color: #B8C5D6; max-width: 800px; white-space: normal; line-height: 1.8;">' + gnuCopypasta + '</div></div><button onclick="goBack()" style="position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; font-family: "Share Tech Mono", monospace; background: #3D6299; border: 1px solid #5E8ABF; border-radius: 5px; color: #B8C5D6; cursor: pointer;">Go Back</button>';
+    }
+
+    window.goBack = function() {
+      document.body.innerHTML = originalContent;
+      document.getElementById('linux-trigger').addEventListener('click', triggerLinuxCopypasta);
+    };
+
     document.getElementById('linux-trigger').addEventListener('click', triggerLinuxCopypasta);
 
     window.getEvaQuote = async function() {
