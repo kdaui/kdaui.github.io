@@ -7,6 +7,3 @@ waifu2x-caffe/
 # Generated images
 *_upscaled*.png
 *_posterized*.png
-
-# Python scripts
-*.py
