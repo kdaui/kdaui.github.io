@@ -253,6 +253,28 @@ a:hover {
   border: 1px solid var(--border-color);
 }
 
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee-content {
+  display: inline-block;
+  animation: marquee 30s linear infinite;
+  color: var(--text-primary);
+  font-size: 1.1rem;
+  letter-spacing: 2px;
+}
+
+.marquee-content:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 .specs-section {
   background-color: rgba(28, 35, 51, 0.5);
   border: 1px solid var(--border-color);
