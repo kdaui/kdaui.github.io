@@ -1,0 +1,12 @@
+# waifu2x
+waifu2x/
+waifu2x-ncnn-vulkan-windows/
+waifu2x-caffe/
+*.exe
+
+# Generated images
+*_upscaled*.png
+*_posterized*.png
+
+# Python scripts
+*.py
