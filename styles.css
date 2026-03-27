@@ -256,14 +256,16 @@ a:hover {
 .marquee-container {
   overflow: hidden;
   white-space: nowrap;
+  display: flex;
 }
 
 .marquee-content {
-  display: inline-block;
-  animation: marquee 30s linear infinite;
+  flex-shrink: 0;
+  animation: marquee 40s linear infinite;
   color: var(--text-primary);
   font-size: 1.1rem;
   letter-spacing: 2px;
+  padding-right: 50px;
 }
 
 .marquee-content:hover {
@@ -272,7 +274,7 @@ a:hover {
 
 @keyframes marquee {
   0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+  100% { transform: translateX(-100%); }
 }
 
 .specs-section {

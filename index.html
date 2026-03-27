@@ -133,7 +133,7 @@
 				<h3>My Homies:</h3>
               	<div class="friends-scroll">
                 <div class="marquee-container">
-                  <div class="marquee-content">monochromehd dracodrip5 wigster81 grapman mr_toasty911 zachary019 ._nico_. 851381 (SGS09) a1q1b mada1r5 thewolflovers breatheair0274 mercury The 22nd Pilot owen300409 &nbsp;&nbsp;&nbsp;&nbsp; monochromehd dracodrip5 wigster81 grapman mr_toasty911 zachary019 ._nico_. 851381 (SGS09) a1q1b mada1r5 thewolflovers breatheair0274 mercury The 22nd Pilot owen300409</div>
+                  <div class="marquee-content" id="friends-list">monochromehd dracodrip5 wigster81 grapman mr_toasty911 zachary019 ._nico_. 851381 (SGS09) a1q1b mada1r5 thewolflovers breatheair0274 mercury The 22nd Pilot owen300409</div>
                 </div>
               </div>
 			</div>
@@ -151,6 +151,14 @@
   <script src="https://kdaui.github.io/scripts/script.js"></script>
 	<script>
   document.addEventListener("DOMContentLoaded", function() {
+    // Clone friends list for seamless marquee loop
+    const friendsList = document.getElementById('friends-list');
+    if (friendsList) {
+      const clone = friendsList.cloneNode(true);
+      clone.setAttribute('aria-hidden', 'true');
+      friendsList.parentNode.appendChild(clone);
+    }
+
     const gnuCopypasta = `<p>"I'd just like to interject for a moment. What you're referring to as Linux, is in fact, GNU/Linux, or as I've recently taken to calling it, GNU plus Linux. Linux is not an operating system unto itself, but rather another free component of a fully functioning GNU system made useful by the GNU corelibs, shell utilities and vital system components comprising a full OS as defined by POSIX. Many computer users run a modified version of the GNU system every day, without realizing it. Through a peculiar turn of events, the version of GNU which is widely used today is often called 'Linux,' and many of its users are not aware that it is basically the GNU system, developed by the GNU Project. There really is a Linux, and these people are using it, but it is just a part of the system they use.</p><p>Linux is the kernel: the program in the system that allocates the machine's resources to the other programs that you run. The kernel is an essential part of an operating system, but useless by itself; it can only function in the context of a complete operating system. Linux is normally used in combination with the GNU operating system: the whole system is basically GNU with Linux added, or GNU/Linux. All the so-called 'Linux' distributions are really distributions of GNU/Linux."</p><p>— <a href="https://www.gnu.org/gnu/incorrect-quotation.en.html" target="_blank">Richard Stallman</a></p>`;
 
     let originalContent = '';
