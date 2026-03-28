@@ -1,0 +1,95 @@
+name: Quality Checks & Sitemap
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run link checker
+        uses: lycheeverse/lychee-action@v1.10.0
+        with:
+          args: --verbose --no-progress './**/*.html'
+          fail: true
+          
+  generate-sitemap:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          
+      - name: Generate sitemap
+        run: |
+          cat > generate-sitemap.js << 'EOF'
+          const fs = require('fs');
+          const path = require('path');
+          
+          const baseUrl = 'https://kdaui.github.io';
+          const ignorePatterns = ['.git', 'node_modules', 'waifu2x', 'scripts'];
+          
+          function getHtmlFiles(dir, base = '') {
+            let files = [];
+            const items = fs.readdirSync(dir);
+            for (const item of items) {
+              if (ignorePatterns.some(p => item.includes(p))) continue;
+              const fullPath = path.join(dir, item);
+              const stat = fs.statSync(fullPath);
+              if (stat.isDirectory()) {
+                files = files.concat(getHtmlFiles(fullPath, base + item + '/'));
+              } else if (item === 'index.html') {
+                files.push({ path: base, file: fullPath });
+              } else if (item.endsWith('.html')) {
+                files.push({ path: base + item.replace('.html', '/'), file: fullPath });
+              }
+            }
+            return files;
+          }
+          
+          const files = getHtmlFiles('.');
+          const today = new Date().toISOString().split('T')[0];
+          
+          let sitemap = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+`;
+          
+          for (const f of files) {
+            const url = baseUrl + f.path;
+            sitemap += `  <url>
+    <loc>${url}</loc>
+    <lastmod>${today}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>${f.path === '' ? '1.0' : '0.8'}</priority>
+  </url>
+`;
+          }
+          
+          sitemap += '</urlset>';
+          fs.writeFileSync('sitemap.xml', sitemap);
+          console.log('Generated sitemap with', files.length, 'pages');
+          EOF
+          node generate-sitemap.js
+          
+      - name: Upload sitemap
+        uses: actions/upload-artifact@v4
+        with:
+          name: sitemap
+          path: sitemap.xml
+          
+      - name: Deploy sitemap
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add sitemap.xml
+          git diff --staged --quiet || git commit -m "Auto: update sitemap"
+          git push
