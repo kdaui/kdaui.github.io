@@ -1,0 +1,22 @@
+name: Deploy to Nekoweb
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to Nekoweb
+        uses: mp-pinheiro/nekoweb-deploy@main
+        with:
+          API_KEY: ${{ secrets.NEKOWEB_API_KEY }}
+          BUILD_DIR: '.'
+          DEPLOY_DIR: '/'
+          NEKOWEB_PAGENAME: 'kdaui'
