@@ -7,7 +7,23 @@
     <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        body {
+            position: relative;
+        }
+        .error-bg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 600px;
+            width: 80%;
+            opacity: 0.15;
+            z-index: 0;
+            pointer-events: none;
+        }
         .error-container {
+            position: relative;
+            z-index: 1;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -15,12 +31,6 @@
             min-height: 80vh;
             text-align: center;
             padding: 2rem;
-        }
-        .error-image {
-            max-width: 300px;
-            width: 100%;
-            margin-bottom: 2rem;
-            opacity: 0.9;
         }
         .error-code {
             font-size: 6rem;
@@ -59,8 +69,8 @@
 </head>
 <body>
     <div class="background-pattern"></div>
+    <img src="assets/images/rei.png" alt="" class="error-bg">
     <div class="error-container">
-        <img src="assets/images/rei.png" alt="REI" class="error-image">
         <div class="error-code">404</div>
         <p class="error-message">ACHTUNG ACHTUNG</p>
         <p class="error-numbers">87004 25631 74389 01247 55923 81690 37461 92058 43271 68905</p>
