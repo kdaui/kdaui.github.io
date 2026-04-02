@@ -101,7 +101,9 @@ async function fetchLastTrack() {
 
         const trackName = track.name;
         const artistName = track.artist['#text'];
-        const albumCover = track.image[2]['#text'] || '/assets/images/fallback-image-url.png';
+        const rawAlbumCover = track.image[2]['#text'];
+        const isDefaultLastFmImage = rawAlbumCover.includes('2a96cbd8b46e442fc41c2b86b821562f');
+        const albumCover = isDefaultLastFmImage ? '/assets/images/fallback-image-url.png' : rawAlbumCover;
 
         lastFmDiv.innerHTML = `
             <h3>${isPlaying ? "Now Playing" : "Recently Played"}</h3>
