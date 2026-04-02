@@ -106,7 +106,7 @@ async function fetchLastTrack() {
         lastFmDiv.innerHTML = `
             <h3>${isPlaying ? "Now Playing" : "Recently Played"}</h3>
             <div style="display: flex; align-items: center; gap: 15px">
-                <img src="${albumCover}" style="width: 80px; border-radius: 8px;" alt="Album Art">
+                <img src="${albumCover}" onerror="this.src='/assets/images/fallback-image-url.png'" style="width: 80px; border-radius: 8px;" alt="Album Art">
                 <div>
                     <div style="font-weight: bold;">${trackName}</div>
                     <div style="font-size: 0.9em; opacity: 0.8;">${artistName}</div>
